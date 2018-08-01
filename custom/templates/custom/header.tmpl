@@ -1,3 +1,10 @@
 <style data-comment="Custom style from custom/templates/custom/header.tmpl">
     .octicon-milestone + a{font-weight:bold;font-size:150%;}
 </style>
+<script data-comment="Custom script from custom/templates/custom/header.tmpl">
+    document.addEventListener('DOMContentLoaded', function () {
+        var closedMilestonesLink = $('.ui.basic.button[href$="milestones?state=closed"]'),
+            href = closedMilestonesLink.attr('href');
+        closedMilestonesLink.attr('href', href.replace('state=closed', 'sort=furthestduedate&state=closed'));
+    })
+</script>

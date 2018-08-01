@@ -5,6 +5,11 @@
     document.addEventListener('DOMContentLoaded', function () {
         var closedMilestonesLink = $('.ui.basic.button[href$="milestones?state=closed"]'),
             href = closedMilestonesLink.attr('href');
-        closedMilestonesLink.attr('href', href.replace('state=closed', 'sort=furthestduedate&state=closed'));
+        if (closedMilestonesLink.length) {
+            closedMilestonesLink.attr('href', href.replace('state=closed', 'sort=furthestduedate&state=closed'));
+            $('.pagination a[href]').each(function (_, item) {
+                item.href = item.href.replace('state=closed', 'sort=furthestduedate&state=closed');
+            });
+        }
     })
 </script>
